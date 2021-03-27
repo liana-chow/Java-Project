@@ -40,7 +40,6 @@ public class GameSaverLoader {
         data = platformToString(data);
         data = playerToString(data);
         data = enemyToString(data);
-        data = worldToString(data);
         FileWriter writer = null;
         try {
             //writing to file
@@ -120,7 +119,7 @@ public class GameSaverLoader {
                 System.out.println("Level3");
             }
 
-            settingUpLevel(level, Platform, Enemies , Player, World);
+            settingUpLevel(level, Platform, Enemies , Player);
 
         } finally {
             //close the reader
@@ -147,12 +146,11 @@ public class GameSaverLoader {
      * @return
      */
     protected static void settingUpLevel(GameLevel level, List<List<String>> Platform,
-                                         List<List<String>> Enemies, List<String> Player, List<String> World){
+                                         List<List<String>> Enemies, List<String> Player){
         //for all the different classes, it will regenerate what was already there
         level.regeneratePlatforms(Platform);
         level.regenerateEnemies(Enemies);
         level.regeneratePlayer(Player);
-        level.regenerateWorld(World);
     }
 
     /**
@@ -211,21 +209,6 @@ public class GameSaverLoader {
                 data += temp;
             }
         }
-        return data;
-    }
-
-    /**
-     * Turns all of the world information into a string
-     *
-     * @param data String
-     *
-     * @return data String
-     */
-    protected String worldToString(String data){
-        //turning world data into a string
-        String temp = "W," + level.getGenerated() + "," +
-                level.getPickedUp() + "\n";
-        data+=temp;
         return data;
     }
 }

@@ -254,20 +254,6 @@ public abstract class GameLevel extends World {
         float posY = Float.parseFloat(Player.get(7).substring(0, Player.get(7).length() - 1));
         this.getPlayer().setPosition(new Vec2(posX, posY));
     }
-
-    /**
-     * Recreates the world from the save.
-     *
-     * All of the stats that are saved in the file are then recovered.
-     *
-     * @param World List<String>
-     * @return
-     */
-    public void regenerateWorld(List<String> World){
-        //pass on world variables at the state it was before saving
-        this.setGenerated(Boolean.parseBoolean(World.get(1)));
-        this.setPickedUp(Boolean.parseBoolean(World.get(2)));
-    }
     
     //abstract method to help with saving
     public abstract String getLevelName();
